@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "7lI5SHsX/X17+T+nvtXJmrLRL7dc0BaguJdfIDgHZnlVJLLTqiLUwXPboZ1jtLmYxCpQ3AfDXk8h5+JhahD3bA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\envy\\RiderProjects\\DemoSignalr\\DemoSignalr\\DemoSignalr.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\envy\\.nuget\\packages\\cachingframework.redis\\15.0.2\\cachingframework.redis.15.0.2.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\8.0.7\\microsoft.aspnetcore.connections.abstractions.8.0.7.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\8.0.7\\microsoft.aspnetcore.signalr.common.8.0.7.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\microsoft.extensions.features\\8.0.7\\microsoft.extensions.features.8.0.7.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\stackexchange.redis\\2.8.0\\stackexchange.redis.2.8.0.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
+    "C:\\Users\\envy\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

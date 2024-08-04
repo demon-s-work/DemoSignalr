@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div id="inputForm">
+        <label for="nickname">Username</label>
+        <input type="text" id="nickname"/>
+        <label for="message">Message</label>
+        <input type="text" id="message"/>
+        <label for="to">Reciever</label>
+        <input type="text" id="to"/>
+        <input type="button" id="sendBtn" value="Send" disabled="disabled"/>
+        <input type="button" id="connectBtn" value="Connect"/>
+    </div>
+    <div id="chatroom"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script>
+        const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/test")
+            .build();
+
+        document.getElementById("sendBtn").addEventListener("click", function () {
+            let message = document.getElementById("message").value;
+            let from = document.getElementById("nickname").value;
+            let to = document.getElementById("to").value;
+            fetch(`/Api/Send?from=${from}&message=${message}&to=${to}&uid=${getCookie("uid")}`)
+        });
+
+        document.getElementById("connectBtn").addEventListener("click", function () {
+            let connectionId = hubConnection.connection.connectionId
+            let username = document.getElementById("nickname").value;
+            let uid = getCookie("uid")
+            if (uid === "")
+            {
+                fetch(`/Api/Connect?userName=${username}&connectionId=${connectionId}`)
+                    .then((response) => response.text())
+                    .then((text) => document.cookie=`uid=${text}`)
+            }
+            else
+            {
+                fetch(`/Api/Connect?userName=${username}&connectionId=${connectionId}&uid=${uid}`)
+            }
+        });
+
+        hubConnection.on("Ping", function (message) {
+            let ping = document.createElement("p");
+            ping.textContent = `ping: ${message.reason} on ${message.timestamp}`;
+            document.getElementById("chatroom").appendChild(ping);
+        });
+
+        hubConnection.on("NewMessage", function(message) {
+            let messageElement = document.createElement("p");
+            let time = new Date(message.timestamp)
+            messageElement.textContent = `${time.toLocaleTimeString("en-EU")}|${message.from}: ${message.text}`;
+            document.getElementById("chatroom").appendChild(messageElement);
+        });
+
+        hubConnection.start()
+            .then(function () {
+                document.getElementById("sendBtn").disabled = false;
+            })
+            .catch(function (err) {
+                return console.error(err.toString());
+            });
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</div>
